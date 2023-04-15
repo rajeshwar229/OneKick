@@ -15,11 +15,18 @@
     
 </head>
 <body class="bg-light text-dark platform" data-template="template0">
-    <audio id="bg-music-1" src="bg-music-1.mp3" type="audio/mp3" autoplay="true" loop="loop"></audio>
-    <audio id="bg-music-2" src="bg-music-2.mp3" type="audio/mp3" autoplay="true" loop="loop"></audio>
+    
     <button class="d-none play-bg-music-btn">Play BG Music</button>
     <div class="main">
-        <div class="row m-0 setup">
+        <div class="volume-controls position-fixed fixed-right">
+            <audio id="bg-music-1" src="bg-music-1.mp3" type="audio/mp3" autoplay="true" loop="loop" data-link="music" data-status="on"></audio>
+            <audio id="bg-music-2" src="bg-music-2.mp3" type="audio/mp3" autoplay="true" loop="loop" data-link="music" data-status="on"></audio>
+            <audio id="kick-sound" src="kick-sound.mp3" type="audio/mp3" data-link="sound" data-status="on"></audio>
+            <img src="Images/musicOn.png" class="music-on cursor-pointer" alt="Music On" data-off="Images/musicOff.png" data-on="Images/musicOn.png" data-link="music" data-status="on">
+            <img src="Images/soundOn.png" class="sound-on cursor-pointer" alt="Sound On" data-off="Images/soundOff.png" data-on="Images/soundOn.png" data-link="sound" data-status="on">
+        </div>
+        
+        <div class="row m-0">
             <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
                 <h1 class="game-title text-center mt-4">One Kick</h1>
             </div>
@@ -138,9 +145,6 @@
                 </form>
             </div>
         </div>
-
-        <audio id="kick-sound"><source src="kick-sound.mp3" type="audio/mp3"></audio>
-        
     </div>
 
     <div class="modal fade text-center" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="help-modal-label" aria-hidden="true">
