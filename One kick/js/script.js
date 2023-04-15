@@ -38,6 +38,7 @@ $(function(){
             kickSound : $('#kick-sound')[0],
             bgMusic : $('#bg-music-1')[0],
             gamePlayMusic : $('#bg-music-2')[0],
+            volumeControls : $('.volume-controls img'),
 
             //Dynamically added UI Elements should be handled as functions
             nearestEnemy : function() {
@@ -49,8 +50,8 @@ $(function(){
             rightEnemy : function() {
                 return $('.main .game .right-enemies .enemy');
             },
-            activeBackground : function() {
-                return $('.background-carousel .carousel-item.actie');
+            audioControl : function(dataset) {
+                return $(`audio[data-link=${dataset}]`);
             },
         };
 
@@ -301,6 +302,27 @@ $(function(){
 
             DOM.backgroundCarousel.on('slid.bs.carousel', function(ev){
                 gameCtrl.attrChange(DOM.bodyEle,'data-template', ev.relatedTarget.dataset.template);
+            });
+
+            DOM.volumeControls.on('click', function(){
+                DOM.audioControl(this.dataset.link).each(function(){
+                    if(this.dataset.status === 'on'){
+                        this.volume = 0;
+                        this.dataset.status = 'off';
+                    }
+                    else{
+                        this.volume = 1;
+                        this.dataset.status = 'on';
+                    }
+                });
+                if(this.dataset.status === 'on'){
+                    gameCtrl.attrChange($(this)[0],'src',this.dataset.off);
+                    this.dataset.status = 'off';
+                }
+                else{
+                    gameCtrl.attrChange($(this)[0],'src',this.dataset.on);
+                    this.dataset.status = 'on';
+                }
             });
 
             // Start the Game everytime Play button is clicked
