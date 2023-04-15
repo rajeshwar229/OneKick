@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=2, shrink-to-fit=no">
     <link rel="shortcut icon" href="Images/favicon.png" type="image/x-icon">
     <title>One Kick</title>
     <link rel="stylesheet" href="css/style.css">
@@ -14,9 +14,16 @@
 
     
 </head>
-<body class="bg-light text-dark platform">
+<body class="bg-light text-dark platform" data-template="template0">
+    <audio id="bg-music-1" src="bg-music-1.mp3" type="audio/mp3" autoplay="true" loop="loop"></audio>
+    <audio id="bg-music-2" src="bg-music-2.mp3" type="audio/mp3" autoplay="true" loop="loop"></audio>
+    <button class="d-none play-bg-music-btn">Play BG Music</button>
     <div class="main">
-        <h1 class="game-title text-center mt-4">One Kick</h1>
+        <div class="row m-0 setup">
+            <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
+                <h1 class="game-title text-center mt-4">One Kick</h1>
+            </div>
+        </div>
         <div class="row m-0 setup">
             <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
                 <form class="d-flex flex-column">
@@ -24,8 +31,79 @@
                     <button class="help-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-toggle="modal" data-target="#help-modal">Help</button>
                     <button class="stats-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="setup" data-show="statistics">Statistics</button>
                 </form>
+                <div id="carouselExampleIndicators" class="carousel background-carousel slide mt-4" data-ride="false" data-interval="false">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="10"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="11"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="12"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="13"></li>
+                    </ol>
+                    <div class="carousel-inner h-100">
+                      <div class="carousel-item active" data-template="template0">
+                        <img src="Images/bg.jpg" class="d-block w-100" style="height: 220px" alt="First Background">
+                      </div>
+                      <div class="carousel-item" data-template="template1">
+                        <img src="Images/bg1.jpg" class="d-block w-100" style="height: 220px" alt="Second Background">
+                      </div>
+                      <div class="carousel-item" data-template="template2">
+                        <img src="Images/bg2.jpg" class="d-block w-100" style="height: 220px" alt="Third Background">
+                      </div>
+                      <div class="carousel-item" data-template="template3">
+                        <img src="Images/bg3.jpg" class="d-block w-100" style="height: 220px" alt="Third Background">
+                      </div>
+                      <div class="carousel-item" data-template="template4">
+                        <img src="Images/bg4.png" class="d-block w-100" style="height: 220px" alt="Fourth Background">
+                      </div>
+                      <div class="carousel-item" data-template="template5">
+                        <img src="Images/bg5.jpg" class="d-block w-100" style="height: 220px" alt="Fifth Background">
+                      </div>
+                      <div class="carousel-item" data-template="template6">
+                        <img src="Images/bg6.jpg" class="d-block w-100" style="height: 220px" alt="Sixth Background">
+                      </div>
+                      <div class="carousel-item" data-template="template7">
+                        <img src="Images/bg7.jpg" class="d-block w-100" style="height: 220px" alt="Seventh Background">
+                      </div>
+                      <div class="carousel-item" data-template="template8">
+                        <img src="Images/bg8.jpg" class="d-block w-100" style="height: 220px" alt="Eigth Background">
+                      </div>
+                      <div class="carousel-item" data-template="template9">
+                        <img src="Images/bg9.jpg" class="d-block w-100" style="height: 220px" alt="Ninth Background">
+                      </div>
+                      <div class="carousel-item" data-template="template10">
+                        <img src="Images/bg10.jpg" class="d-block w-100" style="height: 220px" alt="Tenth Background">
+                      </div>
+                      <div class="carousel-item" data-template="template11">
+                        <img src="Images/bg11.jpg" class="d-block w-100" style="height: 220px" alt="Eleventh Background">
+                      </div>
+                      <div class="carousel-item" data-template="template12">
+                        <img src="Images/bg12.jpg" class="d-block w-100" style="height: 220px" alt="Twevelth Background">
+                      </div>
+                      <div class="carousel-item" data-template="template13">
+                        <img src="Images/bg13.jpg" class="d-block w-100" style="height: 220px" alt="Thirteenth Background">
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
             </div>
         </div> 
+        
 
         <div class="game d-none">
             <div class="row m-0">
@@ -61,7 +139,8 @@
             </div>
         </div>
 
-        <audio id="kick-sound"><source src="punch.mp3" type="audio/mp3"></audio>
+        <audio id="kick-sound"><source src="kick-sound.mp3" type="audio/mp3"></audio>
+        
     </div>
 
     <div class="modal fade text-center" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="help-modal-label" aria-hidden="true">

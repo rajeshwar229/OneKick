@@ -2,9 +2,61 @@ html {
     height: 100%;
 }
 body.platform {
-    background: url('../Images/bg.jpg');
     background-size: cover;
     background-position-y: bottom;
+    background-position-x: center;
+}
+body.platform[data-template="template0"]{
+    background-image: url('../Images/bg.jpg');
+}
+body.platform[data-template="template1"]{
+    background-image: url('../Images/bg1.jpg');
+}
+body.platform[data-template="template2"]{
+    background-image: url('../Images/bg2.jpg');
+}
+body.platform[data-template="template3"]{
+    background-image: url('../Images/bg3.jpg');
+}
+body.platform[data-template="template4"]{
+    background-image: url('../Images/bg4.png');
+}
+body.platform[data-template="template5"]{
+    background-image: url('../Images/bg5.jpg');
+}
+body.platform[data-template="template6"]{
+    background-image: url('../Images/bg6.jpg');
+}
+body.platform[data-template="template7"]{
+    background-image: url('../Images/bg7.jpg');
+}
+body.platform[data-template="template8"]{
+    background-image: url('../Images/bg8.jpg');
+}
+body.platform[data-template="template9"]{
+    background-image: url('../Images/bg9.jpg');
+}
+body.platform[data-template="template10"]{
+    background-image: url('../Images/bg10.jpg');
+}
+body.platform[data-template="template11"]{
+    background-image: url('../Images/bg11.jpg');
+}
+body.platform[data-template="template12"]{
+    background-image: url('../Images/bg12.jpg');
+}
+body.platform[data-template="template13"]{
+    background-image: url('../Images/bg13.jpg');
+}
+body.platform[data-template="template1"] h1, body.platform[data-template="template3"] h1,
+body.platform[data-template="template9"] h1, body.platform[data-template="template10"] h1,
+body.platform[data-template="template11"] h1, body.platform[data-template="template12"] h1,
+body.platform[data-template="template13"] h1{
+    color: white;
+}
+body.platform[data-template="template2"] h1{
+    color: white;
+    background-color: forestgreen;
 }
 div.main {
     display: grid;
@@ -42,7 +94,7 @@ div.enemy {
     background: url(../Images/Hero.png) -11px -12px;
     width: 41px;
     height: 81px;
-    filter: invert(1);
+    filter: sepia(1) invert(1);
     display: inline-flex;
 }
 div.empty-enemy {
@@ -55,3 +107,4 @@ div.explode {
     background-repeat: no-repeat;
     filter: invert(0);
 }
+

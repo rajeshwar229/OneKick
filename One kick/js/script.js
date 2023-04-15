@@ -28,6 +28,7 @@ $(function(){
             leftEnemyParent :$('.main .game .left-enemies'),
             rightEnemyParent :$('.main .game .right-enemies'),
             enemyHitTime : $('.enemy-hit-time .progress-bar'),
+            backgroundCarousel : $('#carouselExampleIndicators'),
 
             // Statstics elements
             scoreEle: $('.score'),
@@ -35,6 +36,8 @@ $(function(){
             gamesPlayed : $('.statistics .games-played'),
             highScore : $('.statistics .highest-score'),
             kickSound : $('#kick-sound')[0],
+            bgMusic : $('#bg-music-1')[0],
+            gamePlayMusic : $('#bg-music-2')[0],
 
             //Dynamically added UI Elements should be handled as functions
             nearestEnemy : function() {
@@ -45,6 +48,9 @@ $(function(){
             },
             rightEnemy : function() {
                 return $('.main .game .right-enemies .enemy');
+            },
+            activeBackground : function() {
+                return $('.background-carousel .carousel-item.actie');
             },
         };
 
@@ -88,7 +94,7 @@ $(function(){
 
             // Change attribute value for an element
             attrChange : function (ele, atrname, atrval) {
-                ele.prop(atrname, atrval);
+                $(ele).attr(atrname, atrval);
                 return this;
             },
 
@@ -218,16 +224,6 @@ $(function(){
         // This functions is for all User interactions events
         const setupEvents = () => {
             
-            DOM.allButtons.on('click', function(event) {
-                event.preventDefault();
-
-                if( this.dataset.parent && this.dataset.show ) {
-                    gameCtrl.addRemoveCls(gameCtrl.returnParentSibling($(this), this.dataset.parent, this.dataset.show), 'd-block', 'd-none')
-                            .addRemoveCls(gameCtrl.returnParent($(this), this.dataset.parent), 'd-none', 'd-block');
-                }
-                
-            });
-
             const kickSound = function(){
                 if(DOM.kickSound.duration > 0 && !DOM.kickSound.paused){
                     DOM.kickSound.pause();
@@ -241,7 +237,9 @@ $(function(){
 
             // This will reset all the values to beginning values
             const resetGame = function() {
-
+                DOM.gamePlayMusic.pause();
+                DOM.gamePlayMusic.currentTime = 0;
+                DOM.bgMusic.play();
                 DOM.enemyHitTime.stop();
                 gameObj.highScoreLocalStorage("oneKickHighScore", gameObj.score);
 
@@ -291,8 +289,25 @@ $(function(){
                     });
             }
 
+            DOM.allButtons.on('click', function(event) {
+                event.preventDefault();
+
+                if( this.dataset.parent && this.dataset.show ) {
+                    gameCtrl.addRemoveCls(gameCtrl.returnParentSibling($(this), this.dataset.parent, this.dataset.show), 'd-block', 'd-none')
+                            .addRemoveCls(gameCtrl.returnParent($(this), this.dataset.parent), 'd-none', 'd-block');
+                }
+                
+            });
+
+            DOM.backgroundCarousel.on('slid.bs.carousel', function(ev){
+                gameCtrl.attrChange(DOM.bodyEle,'data-template', ev.relatedTarget.dataset.template);
+            });
+
             // Start the Game everytime Play button is clicked
             DOM.playButton.on('click', function(event){
+                DOM.bgMusic.pause();
+                DOM.bgMusic.currentTime = 0;
+                DOM.gamePlayMusic.play();
                 jQuery.fx.off = true;
                 // Unbind keyup event as kick should be enabled only after the enemy reaches the hero 
                 DOM.documentEle.unbind('keyup');
@@ -326,7 +341,7 @@ $(function(){
                     DOM.documentEle.on('keyup', function(event){
                         event.preventDefault();
                         // This is the setTimeOut time for increasing enemy hit time width
-                        let bloodTime = 150;
+                        let bloodTime = 100;
                         
                         // Check if the game started and enemy reached
                         if(gameObj.start && gameObj.start.enemyReached === true){
@@ -406,7 +421,11 @@ $(function(){
                                     
                                 }
                                 else{
+                                    gameCtrl.addRemoveCls(DOM.nearestEnemy(), 'kick')
+                                                .addRemoveCls(DOM.heroEle, 'explode');
+                                    setTimeout(() => {
                                         resetGame();
+                                    },500);
                                 }
                             }
                         }
