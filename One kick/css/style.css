@@ -108,3 +108,11 @@ div.explode {
     filter: invert(0);
 }
 
+.fixed-right{
+    right: 0;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
